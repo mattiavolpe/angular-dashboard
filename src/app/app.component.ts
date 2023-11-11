@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
     } else {
       this.authService.isLoggedIn = false;
       this.authService.user = null;
+      localStorage.removeItem("user");
     }
   }
 }
