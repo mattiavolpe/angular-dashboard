@@ -1,0 +1,29 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened>
+    <mat-list role="list">
+      <mat-list-item role="listitem" routerLink="/page1" routerLinkActive="active" class="px-5">Page 1</mat-list-item>
+      <mat-list-item role="listitem" routerLink="/page2" routerLinkActive="active" class="px-5">Page 2</mat-list-item>
+      <mat-list-item role="listitem" routerLink="/page3" routerLinkActive="active" class="px-5">Page 3</mat-list-item>
+    </mat-list>    
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span class="example-spacer"></span>
+      <button routerLink="/login" *ngIf="!authService.isLoggedIn" mat-icon-button class="example-icon" aria-label="Login icon" #tooltip="matTooltip" matTooltip="Login" matTooltipPosition="below" matTooltipHideDelay="0">
+        <mat-icon>login</mat-icon>
+      </button>
+      <button routerLink="/register" *ngIf="!authService.isLoggedIn" mat-icon-button class="example-icon" aria-label="Register icon"  #tooltip="matTooltip" matTooltip="Register" matTooltipPosition="below" matTooltipHideDelay="0">
+        <mat-icon>person_add</mat-icon>
+      </button>
+      <button *ngIf="authService.isLoggedIn" mat-icon-button class="example-icon" aria-label="Logout icon" (click)="logoutUser()" #tooltip="matTooltip" matTooltip="Logout" matTooltipPosition="below" matTooltipHideDelay="0">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <main class="p-5">
+      <h1 *ngIf="!authService.isLoggedIn" class="text-center fw-bolder mb-0 d-flex justify-content-center align-items-center">PLEASE, LOGIN TO EXPLORE THE SITE</h1>
+      <router-outlet />
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,49 @@
+@use "../../../assets/scss/variables.scss" as *;
+
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+}
+
+.mat-mdc-list-item {
+  cursor: pointer !important;
+  transition: 0.3s;
+}
+
+.mat-mdc-list-item:not(.active):hover {
+  background-color: $primary_hover;
+}
+
+.active {
+  background-color: $primary;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+main {
+  min-height: calc(100vh - 56px);
+  min-height: calc(100svh - 56px);
+
+  h1 {
+    min-height: calc(100vh - 56px - 96px);
+    min-height: calc(100svh - 56px - 96px);
+  }
+}
+
+@media (min-width: 600px) {
+  main {
+    min-height: calc(100vh - 64px);
+    min-height: calc(100svh - 64px);
+
+    h1 {
+      min-height: calc(100vh - 64px - 96px);
+      min-height: calc(100svh - 64px - 96px);
+    }
+  }
+}
