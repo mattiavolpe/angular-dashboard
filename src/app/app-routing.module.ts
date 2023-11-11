@@ -3,9 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
-import { Page1Component } from './components/page1/page1.component';
-import { Page2Component } from './components/page2/page2.component';
-import { Page3Component } from './components/page3/page3.component';
+import { FrameworkPageComponent } from './components/framework-page/framework-page.component';
 import { authGuardChild } from './auth/guards/auth.guard';
 
 const routes: Routes = [
@@ -18,19 +16,11 @@ const routes: Routes = [
       // {
       //   path: "",
       //   pathMatch: "full",
-      //   redirectTo: "page1"
+      //   redirectTo: "framework"
       // },
       {
-        path: "page1",
-        component: Page1Component
-      },
-      {
-        path: "page2",
-        component: Page2Component
-      },
-      {
-        path: "page3",
-        component: Page3Component
+        path: "framework",
+        component: FrameworkPageComponent
       }
     ]
   },

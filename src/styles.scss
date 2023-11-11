@@ -1,1 +1,6 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
+
+mat-sidenav .mat-mdc-list-item-unscoped-content {
+  display: flex !important;
+  align-items: center;
+}

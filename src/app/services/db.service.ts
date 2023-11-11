@@ -1,31 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DB_API_KEY } from 'env';
+import { AuthService } from '../auth/services/auth.service';
 // CREATE A FILE NAMED env.ts IN THE PROJECT ROOT DIRECTORY AND FILL IT LIKE THIS:
 // export const DB_API_KEY = "providedApiKeyString";
-
-export const ERROR_MESSAGES: any = {
-  register: {
-    "INVALID_EMAIL": "Email format not valid",
-    "WEAK_PASSWORD : Password should be at least 6 characters": "Password must be at least 6 characters long",
-    "EMAIL_EXISTS": "E-mail already registered"
-  },
-  login: {
-    "INVALID_LOGIN_CREDENTIALS": "Incorrect credentials",
-    "INVALID_EMAIL": "Email format not valid",
-    "API key not valid. Please pass a valid API key.": "Server error: please contact the administrator"
-  }
-};
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   API_KEY = DB_API_KEY;
   REGISTER_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.API_KEY}`;
   LOGIN_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.API_KEY}`;
+
+  DB_BASE_URL = "https://angular-dashboard-13046-default-rtdb.europe-west1.firebasedatabase.app";
 
   registerUser(email: string, password: string) {
     const body = {
@@ -45,5 +35,19 @@ export class DbService {
     }
 
     return this.http.post(this.LOGIN_URL, body);
+  }
+
+  getFrameworks() {
+    return this.http.get(`${this.DB_BASE_URL}/framework.json?auth=${this.authService.user!.getToken()}`);
+  }
+
+  saveFramework(name: string) {
+    return this.http.post(`${this.DB_BASE_URL}/framework.json?auth=${this.authService.user!.getToken()}`, {
+      name,
+      createdBy: this.authService.user!.email,
+      lastUpdatedBy: this.authService.user!.email,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    });
   }
 }

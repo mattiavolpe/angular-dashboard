@@ -21,11 +21,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 @Component({
-  selector: 'app-page1',
-  templateUrl: './page1.component.html',
-  styleUrls: ['./page1.component.scss']
+  selector: 'app-framework-page',
+  templateUrl: './framework-page.component.html',
+  styleUrls: ['./framework-page.component.scss']
 })
-export class Page1Component {
+export class FrameworkPageComponent {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 }
