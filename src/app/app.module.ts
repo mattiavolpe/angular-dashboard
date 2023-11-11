@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FrameworkPageComponent } from './components/framework-page/framework-page.component';
+import { CreateFrameworkComponent } from './create-framework/create-framework.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { FrameworkPageComponent } from './components/framework-page/framework-pa
     RegisterComponent,
     LoginComponent,
     DashboardComponent,
-    FrameworkPageComponent
+    FrameworkPageComponent,
+    CreateFrameworkComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { FrameworkPageComponent } from './components/framework-page/framework-pa
     MatToolbarModule,
     MatTableModule,
     MatTooltipModule,
+    MatDialogModule,
     HttpClientModule
   ],
   providers: [],

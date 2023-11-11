@@ -13,7 +13,7 @@
   
     <mat-form-field>
       <mat-label>Password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" name="password" ngModel required autocomplete="current-password" />
+      <input matInput [type]="hide ? 'password' : 'text'" name="password" ngModel minlength="6" required autocomplete="current-password" />
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>

@@ -19,7 +19,7 @@ const routes: Routes = [
       //   redirectTo: "framework"
       // },
       {
-        path: "framework",
+        path: "framework/:name",
         component: FrameworkPageComponent
       }
     ]

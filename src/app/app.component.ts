@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth/services/auth.service';
 import { DbService } from './services/db.service';
 import { User } from './models/user.model';
+import { FrameworkService } from './services/framework.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { User } from './models/user.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private authService: AuthService, private dbService: DbService) {}
+  constructor(private authService: AuthService, private dbService: DbService, public frameworkService: FrameworkService) {}
   title = 'angular-dashboard';
 
   ngOnInit(): void {
@@ -20,15 +21,15 @@ export class AppComponent implements OnInit {
       
       this.authService.user = new User(savedUser.email, savedUser.localId, savedUser.idToken, savedUser.expirationDate);
 
-      this.dbService.getFrameworks().subscribe(data => {
-        console.log(data);
-      }, error => {
-        console.error(error);
+      this.dbService.getFrameworks().subscribe({
+        next: data => {
+          if (!data)
+            return;
+          
+          this.frameworkService.syncFrameworks(data);
+        },
+        error: error => console.error(error)
       });
-
-      // this.dbService.saveFramework("VueJs").subscribe(data => {
-      //   console.log(data);
-      // });
     } else {
       this.authService.isLoggedIn = false;
       this.authService.user = null;

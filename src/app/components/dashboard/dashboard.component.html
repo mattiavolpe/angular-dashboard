@@ -1,13 +1,13 @@
 <mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" opened>
+  <mat-sidenav *ngIf="authService.isLoggedIn" mode="side" opened>
     <mat-list role="list">
-      <mat-list-item *ngIf="authService.isLoggedIn" role="listitem" class="px-5">
+      <mat-list-item role="listitem" class="px-5" (click)="openDialog()">
         New framework
         <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" matTooltip="New framework" matTooltipPosition="below" matTooltipHideDelay="0">
           <mat-icon>add</mat-icon>
         </button>
       </mat-list-item>
-      <mat-list-item role="listitem" routerLink="/framework" routerLinkActive="active" class="px-5">Page 1</mat-list-item>
+      <mat-list-item *ngFor="let framework of frameworkService.frameworks" role="listitem" routerLink="/framework/{{ framework.name }}" routerLinkActive="active" class="px-5">{{ framework.name }}</mat-list-item>
     </mat-list>    
   </mat-sidenav>
 
