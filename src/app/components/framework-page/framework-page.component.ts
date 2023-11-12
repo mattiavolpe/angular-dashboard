@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { OnInit, Component } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { SlugPipe } from 'src/app/pipes/slug.pipe';
+import { DbService } from 'src/app/services/db.service';
+import { FrameworkService } from 'src/app/services/framework.service';
 
 export interface PeriodicElement {
   name: string;
@@ -25,7 +29,33 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './framework-page.component.html',
   styleUrls: ['./framework-page.component.scss']
 })
-export class FrameworkPageComponent {
+export class FrameworkPageComponent implements OnInit {
+  constructor(private route: ActivatedRoute, private frameworkService: FrameworkService, private dbService: DbService, private slugPipe: SlugPipe) {}
+
+  framework!: any;
+
+  ngOnInit(): void {
+    if (!this.frameworkService.frameworks) {
+      this.dbService.getFrameworks().subscribe({
+        next: data => {
+          if (!data)
+            return;
+          
+          this.frameworkService.syncFrameworks(data);
+
+          this.route.paramMap.subscribe((params: ParamMap) => {
+            this.framework = this.frameworkService.frameworks.find(singleFramework => this.slugPipe.transform(singleFramework.name) === params.get("name"));
+          });
+        },
+        error: error => console.error(error)
+      });
+    } else {
+      this.route.paramMap.subscribe((params: ParamMap) => {
+        this.framework = this.frameworkService.frameworks.find(singleFramework => this.slugPipe.transform(singleFramework.name) === params.get("name"));
+      });
+    }
+  }
+
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 }

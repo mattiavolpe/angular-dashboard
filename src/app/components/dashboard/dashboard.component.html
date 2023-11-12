@@ -7,7 +7,7 @@
           <mat-icon>add</mat-icon>
         </button>
       </mat-list-item>
-      <mat-list-item *ngFor="let framework of frameworkService.frameworks" role="listitem" routerLink="/framework/{{ framework.name }}" routerLinkActive="active" class="px-5">{{ framework.name }}</mat-list-item>
+      <mat-list-item *ngFor="let framework of frameworkService.frameworks" role="listitem" routerLink="/framework/{{ framework.name | slug }}" routerLinkActive="active" class="px-5">{{ framework.name }}</mat-list-item>
     </mat-list>    
   </mat-sidenav>
 

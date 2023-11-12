@@ -23,6 +23,7 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FrameworkPageComponent } from './components/framework-page/framework-page.component';
 import { CreateFrameworkComponent } from './create-framework/create-framework.component';
+import { SlugPipe } from './pipes/slug.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CreateFrameworkComponent } from './create-framework/create-framework.co
     LoginComponent,
     DashboardComponent,
     FrameworkPageComponent,
-    CreateFrameworkComponent
+    CreateFrameworkComponent,
+    SlugPipe
   ],
   imports: [
     BrowserModule,
