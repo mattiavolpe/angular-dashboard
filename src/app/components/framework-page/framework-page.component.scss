@@ -1,3 +1,9 @@
+@use "../../../assets/scss/variables.scss" as *;
+
+h1 {
+  color: $primary;
+}
+
 table {
   width: 100%;
 }

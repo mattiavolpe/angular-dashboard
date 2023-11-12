@@ -11,7 +11,7 @@ import { FrameworkService } from 'src/app/services/framework.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  constructor(public authService: AuthService, private router: Router, public dialog: MatDialog, public frameworkService: FrameworkService) {}
+  constructor(public authService: AuthService, public router: Router, public dialog: MatDialog, public frameworkService: FrameworkService) {}
 
   logoutUser() {
     this.authService.user = null;

@@ -12,7 +12,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" class="position-sticky top-0 end-0 z-2">
       <span class="example-spacer"></span>
       <button routerLink="/login" *ngIf="!authService.isLoggedIn" mat-icon-button class="example-icon" aria-label="Login icon" #tooltip="matTooltip" matTooltip="Login" matTooltipPosition="below" matTooltipHideDelay="0">
         <mat-icon>login</mat-icon>
@@ -25,8 +25,9 @@
       </button>
     </mat-toolbar>
 
-    <main class="p-5">
+    <main class="p-5 overflow-y-auto">
       <h1 *ngIf="!authService.isLoggedIn" class="text-center fw-bolder mb-0 d-flex justify-content-center align-items-center">PLEASE, LOGIN TO EXPLORE THE SITE</h1>
+      <h1 *ngIf="authService.isLoggedIn && frameworkService.frameworks && router.url == '/'" class="text-center fw-bolder mb-0 d-flex justify-content-center align-items-center">SELECT A FRAMEWORK FROM THE LEFT PANEL</h1>
       <router-outlet />
     </main>
   </mat-sidenav-content>
