@@ -1,8 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { OnInit, Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { SlugPipe } from 'src/app/pipes/slug.pipe';
 import { DbService } from 'src/app/services/db.service';
 import { FrameworkService } from 'src/app/services/framework.service';
+import { DeleteFrameworkComponent } from '../delete-framework/delete-framework.component';
+import { EditFrameworkComponent } from '../edit-framework/edit-framework.component';
 
 export interface PeriodicElement {
   name: string;
@@ -32,7 +36,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 18, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
   {position: 19, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
   {position: 20, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-
 ];
 
 @Component({
@@ -41,11 +44,23 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./framework-page.component.scss']
 })
 export class FrameworkPageComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private frameworkService: FrameworkService, private dbService: DbService, private slugPipe: SlugPipe) {}
+  constructor(private route: ActivatedRoute, private frameworkService: FrameworkService, private dbService: DbService, private slugPipe: SlugPipe, private http: HttpClient, private dialog: MatDialog) {}
 
   framework!: any;
 
   ngOnInit(): void {
+    // TODO try this
+    // ELEMENT_DATA.forEach(element => {
+    //   this.http.get(`https://getlinkpreview.onrender.com/?url=${element.name}`).subscribe({
+    //     next: data => {
+    //       console.log(data);
+    //     },
+    //     error: error => {
+    //       console.log(error);
+    //     }
+    //   })
+    // })
+    
     if (!this.frameworkService.frameworks) {
       this.dbService.getFrameworks().subscribe({
         next: data => {
@@ -66,6 +81,23 @@ export class FrameworkPageComponent implements OnInit {
       });
     }
   }
+
+  openDialog(type: string, id: string, name: string, logo: string | null = null, docs: string | null = null) {
+    let dialogRef;
+    switch(type) {
+      case "edit":
+        dialogRef = this.dialog.open(EditFrameworkComponent, { id: "editFrameworkDialog", data: { id, name, logo, docs } });
+        dialogRef.afterClosed().subscribe(() => {
+        });
+        break;
+      
+      case "delete":
+        dialogRef = this.dialog.open(DeleteFrameworkComponent, { id: "deleteFrameworkDialog", data: { id, name } });
+        dialogRef.afterClosed().subscribe(() => {
+        });
+        break;
+    }
+  };
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;

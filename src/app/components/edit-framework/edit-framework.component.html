@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Editing "{{ data.name }}"</h2>
+
+<mat-dialog-content class="mat-typography">
+  <form class="d-flex flex-column align-items-center" #editFrameworkForm="ngForm" (ngSubmit)="editFramework(editFrameworkForm)">
+
+    <mat-form-field>
+      <mat-label>Framework name</mat-label>
+      <input matInput type="text" name="name" [(ngModel)]="data.name" required autocomplete="name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Logo link</mat-label>
+      <input matInput type="url" name="logo" [(ngModel)]="data.logo" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Official docs link</mat-label>
+      <input matInput type="url" name="docs" [(ngModel)]="data.docs" required />
+    </mat-form-field>
+
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="editFrameworkForm.invalid">Insert</button>
+    </mat-dialog-actions>
+    
+  </form>
+</mat-dialog-content>

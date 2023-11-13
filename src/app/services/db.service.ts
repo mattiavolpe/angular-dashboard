@@ -42,7 +42,7 @@ export class DbService {
   }
 
   saveFramework(name: string, logo: string, docs: string) {
-    return this.http.post(`${this.DB_BASE_URL}/framework.json?auth=${this.authService.user!.getToken()}`, {
+    const body = {
       name,
       logo,
       docs,
@@ -50,7 +50,21 @@ export class DbService {
       lastUpdatedBy: this.authService.user!.email,
       createdAt: new Date(),
       updatedAt: new Date()
-    });
+    }
+
+    return this.http.post(`${this.DB_BASE_URL}/framework.json?auth=${this.authService.user!.getToken()}`, body);
+  }
+
+  editFramework(id: string, name: string, logo: string, docs: string) {
+    const body = {
+      name,
+      logo,
+      docs,
+      lastUpdatedBy: this.authService.user!.email,
+      updatedAt: new Date()
+    }
+
+    return this.http.patch(`${this.DB_BASE_URL}/framework/${id}.json?auth=${this.authService.user!.getToken()}`, body);
   }
 
   deleteFramework(id: string) {
