@@ -1,4 +1,13 @@
-<h1  class="fw-bolder mb-5">{{ framework?.name || "Loading..." }}</h1>
+<div class="mb-5">
+  <h1 class="fw-bolder">{{ framework?.name || "Loading..." }}</h1>
+  <h4  *ngIf="framework?.docs" class="fw-bold">
+    Official docs:
+    <a [href]="framework.docs" target="_blank">
+      <code>{{ framework.docs }}</code>
+    </a>
+  </h4>
+</div>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <!--- Note that these columns can be defined in any order.

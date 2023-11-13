@@ -1,14 +1,17 @@
 <h2 mat-dialog-title>Insert a new framework</h2>
 
 <mat-dialog-content class="mat-typography">
-  <form #createFrameworkForm="ngForm" (ngSubmit)="createFramework(createFrameworkForm)">
+  <form class="d-flex flex-column align-items-center" #createFrameworkForm="ngForm" (ngSubmit)="createFramework(createFrameworkForm)">
 
     <mat-form-field>
       <mat-label>Framework name</mat-label>
-      <input matInput type="name" name="name" ngModel required autocomplete="name" />
+      <input matInput type="text" name="name" ngModel required autocomplete="name" />
     </mat-form-field>
 
-    <!-- TODO ADD OFFICIAL DOCS LINK -->
+    <mat-form-field>
+      <mat-label>Official docs link</mat-label>
+      <input matInput type="url" name="docs" ngModel required />
+    </mat-form-field>
 
     <mat-dialog-actions align="end">
       <button mat-button mat-dialog-close>Cancel</button>

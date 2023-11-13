@@ -7,7 +7,7 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
   providedIn: 'root'
 }) 
 export class SlugPipe implements PipeTransform {
-  transform(value: string, ...args: unknown[]): unknown {
+  transform(value: string, ...args: unknown[]): string {
     return value.replace(/[^A-Za-z0-9@]/g, "-");
   }
 }

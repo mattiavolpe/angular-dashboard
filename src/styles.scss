@@ -3,4 +3,6 @@
 mat-sidenav .mat-mdc-list-item-unscoped-content {
   display: flex !important;
   align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 }

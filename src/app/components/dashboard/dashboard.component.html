@@ -1,13 +1,18 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav *ngIf="authService.isLoggedIn" mode="side" opened>
     <mat-list role="list">
-      <mat-list-item role="listitem" class="px-5" (click)="openDialog()">
+      <mat-list-item role="listitem" (click)="openDialog('new')">
         New framework
         <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" matTooltip="New framework" matTooltipPosition="below" matTooltipHideDelay="0">
           <mat-icon>add</mat-icon>
         </button>
       </mat-list-item>
-      <mat-list-item *ngFor="let framework of frameworkService.frameworks" role="listitem" routerLink="/framework/{{ framework.name | slug }}" routerLinkActive="active" class="px-5">{{ framework.name }}</mat-list-item>
+      <mat-list-item *ngFor="let framework of frameworkService.frameworks; index as index" role="listitem" routerLink="/framework/{{ framework.name | slug }}" routerLinkActive="active">
+        {{ framework.name }}
+        <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" matTooltip="New framework" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('delete', framework.id, framework.name)">
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+      </mat-list-item>
     </mat-list>    
   </mat-sidenav>
 

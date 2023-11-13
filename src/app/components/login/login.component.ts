@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 import { DbService } from 'src/app/services/db.service';
 import { ERROR_MESSAGES } from 'src/app/data/error-messages.data';
 import { FrameworkService } from 'src/app/services/framework.service';
+import { SlugPipe } from 'src/app/pipes/slug.pipe';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { FrameworkService } from 'src/app/services/framework.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private dbService: DbService, private authService: AuthService, private router: Router, private frameworkService: FrameworkService) {}
+  constructor(private dbService: DbService, private authService: AuthService, private router: Router, private frameworkService: FrameworkService, private slugPipe: SlugPipe) {}
 
   hide = true;
   error = {
@@ -39,7 +40,7 @@ export class LoginComponent {
             }
 
             this.frameworkService.syncFrameworks(data);
-            this.router.navigate([`/framework/${this.frameworkService.frameworks[0].name}`]);
+            this.frameworkService.redirectToFirstFramework();
           },
           error: error => console.error(error)
         })

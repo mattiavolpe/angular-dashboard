@@ -24,6 +24,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FrameworkPageComponent } from './components/framework-page/framework-page.component';
 import { CreateFrameworkComponent } from './create-framework/create-framework.component';
 import { SlugPipe } from './pipes/slug.pipe';
+import { DeleteFrameworkComponent } from './components/delete-framework/delete-framework.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SlugPipe } from './pipes/slug.pipe';
     DashboardComponent,
     FrameworkPageComponent,
     CreateFrameworkComponent,
-    SlugPipe
+    SlugPipe,
+    DeleteFrameworkComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@
 }
 
 .mat-mdc-list-item {
+  padding: 0 8px;
   cursor: pointer !important;
   transition: 0.3s;
 }
@@ -37,6 +38,10 @@ main {
 }
 
 @media (min-width: 600px) {
+  .mat-mdc-list-item {
+    padding: 0 48px;
+  }
+
   main {
     min-height: calc(100vh - 64px);
     min-height: calc(100svh - 64px);

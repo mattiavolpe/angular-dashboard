@@ -41,13 +41,18 @@ export class DbService {
     return this.http.get(`${this.DB_BASE_URL}/framework.json?auth=${this.authService.user!.getToken()}`);
   }
 
-  saveFramework(name: string) {
+  saveFramework(name: string, docs: string) {
     return this.http.post(`${this.DB_BASE_URL}/framework.json?auth=${this.authService.user!.getToken()}`, {
       name,
+      docs,
       createdBy: this.authService.user!.email,
       lastUpdatedBy: this.authService.user!.email,
       createdAt: new Date(),
       updatedAt: new Date()
     });
+  }
+
+  deleteFramework(id: string) {
+    return this.http.delete(`${this.DB_BASE_URL}/framework/${id}.json?auth=${this.authService.user!.getToken()}`);
   }
 }

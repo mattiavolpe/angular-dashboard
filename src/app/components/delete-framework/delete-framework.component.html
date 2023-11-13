@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Delete {{ data.name }}</h2>
+
+<mat-dialog-content class="mat-typography">
+  <form class="d-flex flex-column align-items-center" #deleteFrameworkForm="ngForm" (ngSubmit)="deleteFramework()">
+
+    <h2>Are you sure you want to delete "{{ data.name }}"?</h2>    
+
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>No</button>
+      <button mat-raised-button color="warn" type="submit">Yes, delete</button>
+    </mat-dialog-actions>
+    
+  </form>
+</mat-dialog-content>
