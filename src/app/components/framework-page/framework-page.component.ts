@@ -44,7 +44,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./framework-page.component.scss']
 })
 export class FrameworkPageComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private frameworkService: FrameworkService, private dbService: DbService, private slugPipe: SlugPipe, private http: HttpClient, private dialog: MatDialog, private router: Router) {}
+  constructor(private route: ActivatedRoute, public frameworkService: FrameworkService, private dbService: DbService, private slugPipe: SlugPipe, private http: HttpClient, private dialog: MatDialog, private router: Router) {}
 
   framework!: any;
 
@@ -70,9 +70,9 @@ export class FrameworkPageComponent implements OnInit {
           this.frameworkService.syncFrameworks(data);
 
           this.route.paramMap.subscribe((params: ParamMap) => {
-            this.framework = this.frameworkService.frameworks.find(singleFramework => this.slugPipe.transform(singleFramework.name) === params.get("name"));
+            this.frameworkService.framework = this.frameworkService.frameworks.find(singleFramework => this.slugPipe.transform(singleFramework.name) === params.get("name"));
             
-            if (!this.framework)
+            if (!this.frameworkService.framework)
               this.router.navigate(["/404"]);
           });
         },
@@ -80,9 +80,9 @@ export class FrameworkPageComponent implements OnInit {
       });
     } else {
       this.route.paramMap.subscribe((params: ParamMap) => {
-        this.framework = this.frameworkService.frameworks.find(singleFramework => this.slugPipe.transform(singleFramework.name) === params.get("name"));
+        this.frameworkService.framework = this.frameworkService.frameworks.find(singleFramework => this.slugPipe.transform(singleFramework.name) === params.get("name"));
         
-        if (!this.framework)
+        if (!this.frameworkService.framework)
           this.router.navigate(["/404"]);
       });
     }

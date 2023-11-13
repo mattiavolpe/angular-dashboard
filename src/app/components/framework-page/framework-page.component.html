@@ -1,27 +1,27 @@
 <div class="mb-5">
-  <h1 class="fw-bolder" *ngIf="!framework">Loading...</h1>
-  <h1 class="fw-bolder d-flex align-items-center gap-3" *ngIf="framework">
-    {{ framework?.name }}
-    <div class="logo_wrapper" *ngIf="framework.logo.length > 0">
-      <img [src]="framework.logo" [alt]="framework.name + ' logo'">
+  <h1 class="fw-bolder" *ngIf="!frameworkService.framework">Loading...</h1>
+  <h1 class="fw-bolder d-flex align-items-center gap-3" *ngIf="frameworkService.framework">
+    {{ frameworkService.framework?.name }}
+    <div class="logo_wrapper" *ngIf="frameworkService.framework.logo?.length > 0">
+      <img [src]="frameworkService.framework.logo" [alt]="frameworkService.framework.name + ' logo'" />
     </div>
   </h1>
-  <h4  *ngIf="framework?.docs" class="fw-bold">
+  <h4  *ngIf="frameworkService.framework?.docs" class="fw-bold">
     Official docs:
-    <a [href]="framework.docs" target="_blank">
-      <code>{{ framework.docs }}</code>
+    <a [href]="frameworkService.framework.docs" target="_blank">
+      <code>{{ frameworkService.framework.docs }}</code>
     </a>
   </h4>
 </div>
 
 <ul class="d-flex align-items-center gap-3 list-unstyled">
   <li>
-    <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" matTooltip="Edit framework" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('edit', framework.id, framework.name, framework.logo, framework.docs)">
+    <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" matTooltip="Edit framework" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('edit', frameworkService.framework.id, frameworkService.framework.name, frameworkService.framework.logo, frameworkService.framework.docs)">
       <mat-icon>edit</mat-icon>
     </button>
   </li>
   <li>
-    <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" matTooltip="Delete framework" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('delete', framework.id, framework.name)">
+    <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" matTooltip="Delete framework" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('delete', frameworkService.framework.id, frameworkService.framework.name)">
       <mat-icon>delete_outline</mat-icon>
     </button>
   </li>

@@ -9,6 +9,7 @@ export class FrameworkService {
   constructor(private slugPipe: SlugPipe, private router: Router) { }
 
   frameworks!: any[];
+  framework!: any;
 
   syncFrameworks(data: Object) {
     this.frameworks = Object.entries(data).map(framework => {
