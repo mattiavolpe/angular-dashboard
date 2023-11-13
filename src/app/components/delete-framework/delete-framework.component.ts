@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { DbService } from 'src/app/services/db.service';
 import { FrameworkService } from 'src/app/services/framework.service';
 
@@ -9,7 +10,7 @@ import { FrameworkService } from 'src/app/services/framework.service';
   styleUrls: ['./delete-framework.component.scss']
 })
 export class DeleteFrameworkComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: string, name: string }, private dbService: DbService, private dialog: MatDialog, private frameworkService: FrameworkService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: string, name: string }, private dbService: DbService, private dialog: MatDialog, private frameworkService: FrameworkService, private router: Router) {
   }
 
   deleteFramework() {
@@ -19,7 +20,13 @@ export class DeleteFrameworkComponent {
 
         this.dbService.getFrameworks().subscribe({
           next: data => {
+            if (!data) {
+              this.router.navigate(["/"]);
+              return;
+            }
+
             this.frameworkService.syncFrameworks(data);
+            this.frameworkService.redirectToFirstFramework();
           },
           error: error => console.error(error)
         });
