@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DbService } from '../../services/db.service';
 import { FrameworkService } from '../../services/framework.service';
+import { Router } from '@angular/router';
+import { SlugPipe } from 'src/app/pipes/slug.pipe';
 
 @Component({
   selector: 'app-create-framework',
@@ -10,7 +12,7 @@ import { FrameworkService } from '../../services/framework.service';
   styleUrls: ['./create-framework.component.scss']
 })
 export class CreateFrameworkComponent {
-  constructor(private dialog: MatDialog, private dbService: DbService, private frameworkService: FrameworkService) {}
+  constructor(private dialog: MatDialog, private dbService: DbService, private frameworkService: FrameworkService, private router: Router, private slugPipe: SlugPipe) {}
 
   createFramework(form: NgForm) {
     this.dbService.saveFramework(form.value.name, form.value.logo, form.value.docs).subscribe({
@@ -20,6 +22,7 @@ export class CreateFrameworkComponent {
         this.dbService.getFrameworks().subscribe({
           next: data => {
             this.frameworkService.syncFrameworks(data);
+            this.router.navigate([`/framework/${this.slugPipe.transform(this.frameworkService.frameworks[this.frameworkService.frameworks.length - 1].name)}`]);
           },
           error: error => console.error(error)
         });
