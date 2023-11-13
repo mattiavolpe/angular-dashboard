@@ -5,6 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { FrameworkPageComponent } from './components/framework-page/framework-page.component';
 import { authGuardChild } from './auth/guards/auth.guard';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: "framework/:name",
         component: FrameworkPageComponent
+      },
+      {
+        path: "404",
+        component: PageNotFoundComponent
       }
     ]
   },
@@ -31,11 +36,6 @@ const routes: Routes = [
   {
     path: "login",
     component: LoginComponent
-  },
-  {
-    path: "404",
-    component: DashboardComponent
-    // TODO set the component
   },
   {
     path: "**",

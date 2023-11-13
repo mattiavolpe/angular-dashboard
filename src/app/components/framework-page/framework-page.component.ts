@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { OnInit, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { SlugPipe } from 'src/app/pipes/slug.pipe';
 import { DbService } from 'src/app/services/db.service';
 import { FrameworkService } from 'src/app/services/framework.service';
@@ -44,7 +44,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./framework-page.component.scss']
 })
 export class FrameworkPageComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private frameworkService: FrameworkService, private dbService: DbService, private slugPipe: SlugPipe, private http: HttpClient, private dialog: MatDialog) {}
+  constructor(private route: ActivatedRoute, private frameworkService: FrameworkService, private dbService: DbService, private slugPipe: SlugPipe, private http: HttpClient, private dialog: MatDialog, private router: Router) {}
 
   framework!: any;
 
@@ -71,6 +71,9 @@ export class FrameworkPageComponent implements OnInit {
 
           this.route.paramMap.subscribe((params: ParamMap) => {
             this.framework = this.frameworkService.frameworks.find(singleFramework => this.slugPipe.transform(singleFramework.name) === params.get("name"));
+            
+            if (!this.framework)
+              this.router.navigate(["/404"]);
           });
         },
         error: error => console.error(error)
@@ -78,6 +81,9 @@ export class FrameworkPageComponent implements OnInit {
     } else {
       this.route.paramMap.subscribe((params: ParamMap) => {
         this.framework = this.frameworkService.frameworks.find(singleFramework => this.slugPipe.transform(singleFramework.name) === params.get("name"));
+        
+        if (!this.framework)
+          this.router.navigate(["/404"]);
       });
     }
   }

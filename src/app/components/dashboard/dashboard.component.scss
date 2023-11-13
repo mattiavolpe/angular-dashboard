@@ -13,6 +13,10 @@
   padding: 0 8px;
   cursor: pointer !important;
   transition: 0.3s;
+
+  a {
+    color: #000000de;
+  }
 }
 
 .mat-mdc-list-item:not(.active):hover {

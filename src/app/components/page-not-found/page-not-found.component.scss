@@ -1,0 +1,11 @@
+h1 {
+  min-height: calc(100vh - 56px - 96px);
+  min-height: calc(100svh - 56px - 96px);
+}
+
+@media (min-width: 600px) {
+  h1 {
+    min-height: calc(100vh - 64px - 96px);
+    min-height: calc(100svh - 64px - 96px);
+  }
+}
