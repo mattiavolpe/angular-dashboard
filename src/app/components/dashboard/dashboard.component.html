@@ -1,7 +1,7 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav *ngIf="authService.isLoggedIn" mode="side" opened>
-    <mat-list role="list">
-      <mat-list-item role="listitem" (click)="openDialog()">
+    <mat-list class="py-0" role="list">
+      <mat-list-item class="border-bottom new_framework" role="listitem" (click)="openDialog()">
         New framework
         <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" matTooltip="New framework" matTooltipPosition="below" matTooltipHideDelay="0">
           <mat-icon>add</mat-icon>

@@ -9,6 +9,10 @@
   background: #eee;
 }
 
+.new_framework {
+  height: 56px !important;
+}
+
 .mat-mdc-list-item {
   padding: 0 8px;
   cursor: pointer !important;
@@ -42,6 +46,10 @@ main {
 }
 
 @media (min-width: 600px) {
+  .new_framework {
+    height: 64px !important;
+  }
+
   .mat-mdc-list-item {
     padding: 0 48px;
   }
