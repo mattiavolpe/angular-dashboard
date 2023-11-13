@@ -1,5 +1,11 @@
 <div class="mb-5">
-  <h1 class="fw-bolder">{{ framework?.name || "Loading..." }}</h1>
+  <h1 class="fw-bolder" *ngIf="!framework">Loading...</h1>
+  <h1 class="fw-bolder d-flex align-items-center gap-3" *ngIf="framework">
+    {{ framework?.name }}
+    <div class="logo_wrapper" *ngIf="framework.logo.length > 0">
+      <img [src]="framework.logo" [alt]="framework.name + ' logo'">
+    </div>
+  </h1>
   <h4  *ngIf="framework?.docs" class="fw-bold">
     Official docs:
     <a [href]="framework.docs" target="_blank">

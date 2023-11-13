@@ -2,6 +2,14 @@
 
 h1 {
   color: $primary;
+
+  .logo_wrapper {
+    height: 50px;
+
+    img {
+      height: 100%;
+    }
+  }
 }
 
 table {

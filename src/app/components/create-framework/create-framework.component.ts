@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { DbService } from '../services/db.service';
-import { FrameworkService } from '../services/framework.service';
+import { DbService } from '../../services/db.service';
+import { FrameworkService } from '../../services/framework.service';
 
 @Component({
   selector: 'app-create-framework',
@@ -13,7 +13,7 @@ export class CreateFrameworkComponent {
   constructor(private dialog: MatDialog, private dbService: DbService, private frameworkService: FrameworkService) {}
 
   createFramework(form: NgForm) {
-    this.dbService.saveFramework(form.value.name, form.value.docs).subscribe({
+    this.dbService.saveFramework(form.value.name, form.value.logo, form.value.docs).subscribe({
       next: () => {
         this.dialog.getDialogById("createFrameworkDialog")?.close();
 

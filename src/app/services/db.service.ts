@@ -41,9 +41,10 @@ export class DbService {
     return this.http.get(`${this.DB_BASE_URL}/framework.json?auth=${this.authService.user!.getToken()}`);
   }
 
-  saveFramework(name: string, docs: string) {
+  saveFramework(name: string, logo: string, docs: string) {
     return this.http.post(`${this.DB_BASE_URL}/framework.json?auth=${this.authService.user!.getToken()}`, {
       name,
+      logo,
       docs,
       createdBy: this.authService.user!.email,
       lastUpdatedBy: this.authService.user!.email,

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { CreateFrameworkComponent } from 'src/app/create-framework/create-framework.component';
+import { CreateFrameworkComponent } from 'src/app/components/create-framework/create-framework.component';
 import { FrameworkService } from 'src/app/services/framework.service';
 import { DeleteFrameworkComponent } from '../delete-framework/delete-framework.component';
 

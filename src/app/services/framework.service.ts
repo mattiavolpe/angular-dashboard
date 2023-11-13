@@ -15,6 +15,7 @@ export class FrameworkService {
       return {
         id: framework[0],
         name: framework[1].name,
+        logo: framework[1].logo,
         docs: framework[1].docs
       }
     });

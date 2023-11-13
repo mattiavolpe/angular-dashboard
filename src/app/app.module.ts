@@ -22,7 +22,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FrameworkPageComponent } from './components/framework-page/framework-page.component';
-import { CreateFrameworkComponent } from './create-framework/create-framework.component';
+import { CreateFrameworkComponent } from './components/create-framework/create-framework.component';
 import { SlugPipe } from './pipes/slug.pipe';
 import { DeleteFrameworkComponent } from './components/delete-framework/delete-framework.component';
 
