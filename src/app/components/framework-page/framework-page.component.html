@@ -16,12 +16,12 @@
 
 <ul class="d-flex align-items-center gap-3 list-unstyled">
   <li>
-    <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" matTooltip="Edit framework" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('edit', frameworkService.framework.id, frameworkService.framework.name, frameworkService.framework.logo, frameworkService.framework.website)">
+    <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" [matTooltip]="'Edit ' + frameworkService.framework?.name" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('edit', frameworkService.framework.id, frameworkService.framework.name, frameworkService.framework.logo, frameworkService.framework.website)">
       <mat-icon>edit</mat-icon>
     </button>
   </li>
   <li>
-    <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" matTooltip="Delete framework" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('delete', frameworkService.framework.id, frameworkService.framework.name)">
+    <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" [matTooltip]="'Delete ' + frameworkService.framework?.name" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('delete', frameworkService.framework.id, frameworkService.framework.name)">
       <mat-icon>delete_outline</mat-icon>
     </button>
   </li>
