@@ -9,7 +9,7 @@
       </mat-list-item>
       <mat-list-item *ngFor="let framework of frameworkService.frameworks; index as index" role="listitem" routerLink="/framework/{{ framework.name | slug }}" routerLinkActive="active">
         {{ framework.name }}
-        <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" matTooltip="New framework" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('delete', framework.id, framework.name)">
+        <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" matTooltip="Delete framework" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('delete', framework.id, framework.name)">
           <mat-icon>delete_outline</mat-icon>
         </button>
       </mat-list-item>
@@ -31,7 +31,7 @@
     </mat-toolbar>
 
     <main class="p-5 overflow-y-auto">
-      <h1 *ngIf="!authService.isLoggedIn" class="text-center fw-bolder mb-0 d-flex justify-content-center align-items-center">PLEASE, LOGIN TO EXPLORE THE SITE</h1>
+      <h1 *ngIf="!authService.isLoggedIn" class="text-center fw-bolder mb-0 d-flex justify-content-center align-items-center">PLEASE, USE THE TOP-RIGHT LOGIN ICON TO EXPLORE THE SITE</h1>
       <h1 *ngIf="authService.isLoggedIn && frameworkService.frameworks && router.url == '/'" class="text-center fw-bolder mb-0 d-flex justify-content-center align-items-center">SELECT A FRAMEWORK FROM THE LEFT PANEL</h1>
       <router-outlet />
     </main>
