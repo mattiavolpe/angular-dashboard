@@ -41,11 +41,11 @@ export class DbService {
     return this.http.get(`${this.DB_BASE_URL}/framework.json?auth=${this.authService.user!.getToken()}`);
   }
 
-  saveFramework(name: string, logo: string, docs: string) {
+  saveFramework(name: string, logo: string, website: string) {
     const body = {
       name,
       logo,
-      docs,
+      website,
       createdBy: this.authService.user!.email,
       lastUpdatedBy: this.authService.user!.email,
       createdAt: new Date(),
@@ -55,11 +55,11 @@ export class DbService {
     return this.http.post(`${this.DB_BASE_URL}/framework.json?auth=${this.authService.user!.getToken()}`, body);
   }
 
-  editFramework(id: string, name: string, logo: string, docs: string) {
+  editFramework(id: string, name: string, logo: string, website: string) {
     const body = {
       name,
       logo,
-      docs,
+      website,
       lastUpdatedBy: this.authService.user!.email,
       updatedAt: new Date()
     }

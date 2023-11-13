@@ -6,17 +6,17 @@
       <img [src]="frameworkService.framework.logo" [alt]="frameworkService.framework.name + ' logo'" />
     </div>
   </h1>
-  <h4  *ngIf="frameworkService.framework?.docs" class="fw-bold">
-    Official docs:
-    <a [href]="frameworkService.framework.docs" target="_blank">
-      <code>{{ frameworkService.framework.docs }}</code>
+  <h4  *ngIf="frameworkService.framework?.website" class="fw-bold">
+    Official website:
+    <a [href]="frameworkService.framework.website" target="_blank">
+      <code>{{ frameworkService.framework.website }}</code>
     </a>
   </h4>
 </div>
 
 <ul class="d-flex align-items-center gap-3 list-unstyled">
   <li>
-    <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" matTooltip="Edit framework" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('edit', frameworkService.framework.id, frameworkService.framework.name, frameworkService.framework.logo, frameworkService.framework.docs)">
+    <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" matTooltip="Edit framework" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('edit', frameworkService.framework.id, frameworkService.framework.name, frameworkService.framework.logo, frameworkService.framework.website)">
       <mat-icon>edit</mat-icon>
     </button>
   </li>

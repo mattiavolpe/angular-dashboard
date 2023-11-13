@@ -15,7 +15,7 @@ export class CreateFrameworkComponent {
   constructor(private dialog: MatDialog, private dbService: DbService, private frameworkService: FrameworkService, private router: Router, private slugPipe: SlugPipe) {}
 
   createFramework(form: NgForm) {
-    this.dbService.saveFramework(form.value.name, form.value.logo, form.value.docs).subscribe({
+    this.dbService.saveFramework(form.value.name, form.value.logo, form.value.website).subscribe({
       next: () => {
         this.dialog.getDialogById("createFrameworkDialog")?.close();
 

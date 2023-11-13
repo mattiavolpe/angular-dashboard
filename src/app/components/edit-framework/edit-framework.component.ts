@@ -12,10 +12,10 @@ import { SlugPipe } from 'src/app/pipes/slug.pipe';
   styleUrls: ['./edit-framework.component.scss']
 })
 export class EditFrameworkComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: string, name: string, logo: string, docs: string }, private dialog: MatDialog, private dbService: DbService, private frameworkService: FrameworkService, private router: Router, private slugPipe: SlugPipe) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: string, name: string, logo: string, website: string }, private dialog: MatDialog, private dbService: DbService, private frameworkService: FrameworkService, private router: Router, private slugPipe: SlugPipe) {}
 
   editFramework(form: NgForm) {
-    this.dbService.editFramework(this.data.id, form.value.name, form.value.logo, form.value.docs).subscribe({
+    this.dbService.editFramework(this.data.id, form.value.name, form.value.logo, form.value.website).subscribe({
       next: (editResponse: any) => {
         this.dialog.getDialogById("editFrameworkDialog")?.close();
 

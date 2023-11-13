@@ -88,11 +88,11 @@ export class FrameworkPageComponent implements OnInit {
     }
   }
 
-  openDialog(type: string, id: string, name: string, logo: string | null = null, docs: string | null = null) {
+  openDialog(type: string, id: string, name: string, logo: string | null = null, website: string | null = null) {
     let dialogRef;
     switch(type) {
       case "edit":
-        dialogRef = this.dialog.open(EditFrameworkComponent, { id: "editFrameworkDialog", data: { id, name, logo, docs } });
+        dialogRef = this.dialog.open(EditFrameworkComponent, { id: "editFrameworkDialog", data: { id, name, logo, website } });
         dialogRef.afterClosed().subscribe(() => {
         });
         break;
