@@ -15,6 +15,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatBadgeModule } from '@angular/material/badge';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -61,6 +62,7 @@ import { DeleteLinkComponent } from './components/delete-link/delete-link.compon
     MatTableModule,
     MatTooltipModule,
     MatDialogModule,
+    MatBadgeModule,
     HttpClientModule
   ],
   providers: [],
