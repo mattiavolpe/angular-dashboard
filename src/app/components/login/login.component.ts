@@ -5,7 +5,6 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 import { DbService } from 'src/app/services/db.service';
 import { ERROR_MESSAGES } from 'src/app/data/error-messages.data';
 import { FrameworkService } from 'src/app/services/framework.service';
-import { SlugPipe } from 'src/app/pipes/slug.pipe';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +12,7 @@ import { SlugPipe } from 'src/app/pipes/slug.pipe';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private dbService: DbService, private authService: AuthService, private router: Router, private frameworkService: FrameworkService, private slugPipe: SlugPipe) {}
+  constructor(private dbService: DbService, private authService: AuthService, private router: Router, private frameworkService: FrameworkService) {}
 
   hide = true;
   error = {
@@ -24,6 +23,8 @@ export class LoginComponent {
   handleLogin(form: NgForm) {
     this.error.status = false;
     this.error.message = "";
+
+    this.frameworkService.frameworkLinks = [];
 
     const email = form.value.email;
     const password = form.value.password;
@@ -53,7 +54,7 @@ export class LoginComponent {
             if (!fetchedLinks)
               return;
             
-            Object.entries(fetchedLinks).forEach(entry => {            
+            Object.entries(fetchedLinks).forEach(entry => {
               const frameworkLinkRef = this.frameworkService.frameworkLinks.find(fw => fw.frameworkId === entry[1].framework_id);
   
               frameworkLinkRef.links.push(

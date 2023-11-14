@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class FrameworkService {
-  constructor(private slugPipe: SlugPipe, private router: Router) { }
+  constructor(private slugPipe: SlugPipe, private router: Router) {}
 
   frameworks!: any[];
   // frameworkLinks: { frameworkId: string, links: { linkId: string, linkName: string, linkUrl: string }[] }[] = [];

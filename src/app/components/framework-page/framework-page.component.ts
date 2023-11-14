@@ -18,7 +18,7 @@ export class FrameworkPageComponent implements OnInit {
 
   links!: { frameworkId: string, links: { linkId: string, linkName: string, linkUrl: string }[] };
 
-  displayedColumns: string[] = ['name', 'url', 'actions'];
+  displayedColumns: string[] = ['name', 'url', 'delete'];
   dataSource: any;
 
   ngOnInit(): void {
@@ -86,6 +86,9 @@ export class FrameworkPageComponent implements OnInit {
       case "deleteLink":
         dialogRef = this.dialog.open(DeleteLinkComponent, { id: "deleteLinkDialog", data: { id, name } });
         dialogRef.afterClosed().subscribe(data => {
+          if (data === "")
+            return;
+          
           this.dataSource = data;
         });
         break;

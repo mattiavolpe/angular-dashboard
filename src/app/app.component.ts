@@ -11,7 +11,6 @@ import { FrameworkService } from './services/framework.service';
 })
 export class AppComponent implements OnInit {
   constructor(private authService: AuthService, private dbService: DbService, public frameworkService: FrameworkService) {}
-  title = 'angular-dashboard';
 
   ngOnInit(): void {
     if (new Date().getTime() <= JSON.parse(localStorage.getItem("user")!)?.expirationDate) {
