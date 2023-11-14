@@ -12,6 +12,7 @@ export class DbService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   API_KEY = DB_API_KEY;
+  
   REGISTER_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.API_KEY}`;
   LOGIN_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.API_KEY}`;
 
@@ -87,6 +88,10 @@ export class DbService {
     };
 
     return this.http.post(`${this.DB_BASE_URL}/link.json?auth=${this.authService.user!.getToken()}`, body);
+  }
+
+  deleteLink(id: string) {
+    return this.http.delete(`${this.DB_BASE_URL}/link/${id}.json?auth=${this.authService.user!.getToken()}`);
   }
 
   getFrameworkLinks(frameworkId: string) {

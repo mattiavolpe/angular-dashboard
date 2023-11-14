@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { OnInit, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -7,6 +6,7 @@ import { DbService } from 'src/app/services/db.service';
 import { FrameworkService } from 'src/app/services/framework.service';
 import { DeleteFrameworkComponent } from '../delete-framework/delete-framework.component';
 import { EditFrameworkComponent } from '../edit-framework/edit-framework.component';
+import { DeleteLinkComponent } from '../delete-link/delete-link.component';
 
 @Component({
   selector: 'app-framework-page',
@@ -14,11 +14,11 @@ import { EditFrameworkComponent } from '../edit-framework/edit-framework.compone
   styleUrls: ['./framework-page.component.scss']
 })
 export class FrameworkPageComponent implements OnInit {
-  constructor(private route: ActivatedRoute, public frameworkService: FrameworkService, private dbService: DbService, private slugPipe: SlugPipe, private http: HttpClient, private dialog: MatDialog, private router: Router) {}
+  constructor(private route: ActivatedRoute, public frameworkService: FrameworkService, private dbService: DbService, private slugPipe: SlugPipe, private dialog: MatDialog, private router: Router) {}
 
   links!: { frameworkId: string, links: { linkId: string, linkName: string, linkUrl: string }[] };
 
-  displayedColumns: string[] = ['name', 'url'];
+  displayedColumns: string[] = ['name', 'url', 'actions'];
   dataSource: any;
 
   ngOnInit(): void {
@@ -71,6 +71,7 @@ export class FrameworkPageComponent implements OnInit {
 
   openDialog(type: string, id: string, name: string, logo: string | null = null, website: string | null = null) {
     let dialogRef;
+    
     switch(type) {
       case "edit":
         dialogRef = this.dialog.open(EditFrameworkComponent, { id: "editFrameworkDialog", data: { id, name, logo, website } });
@@ -80,6 +81,13 @@ export class FrameworkPageComponent implements OnInit {
       case "delete":
         dialogRef = this.dialog.open(DeleteFrameworkComponent, { id: "deleteFrameworkDialog", data: { id, name } });
         dialogRef.afterClosed().subscribe(() => {});
+        break;
+
+      case "deleteLink":
+        dialogRef = this.dialog.open(DeleteLinkComponent, { id: "deleteLinkDialog", data: { id, name } });
+        dialogRef.afterClosed().subscribe(data => {
+          this.dataSource = data;
+        });
         break;
     }
   };

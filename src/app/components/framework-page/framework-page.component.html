@@ -32,17 +32,27 @@
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 
-  <!-- Position Column -->
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Name</th>
     <td mat-cell *matCellDef="let element">{{ element.linkName }}</td>
   </ng-container>
 
-  <!-- Name Column -->
   <ng-container matColumnDef="url">
     <th mat-header-cell *matHeaderCellDef>URL</th>
     <td mat-cell *matCellDef="let element">
       <a [href]="element.linkUrl" target="_blank">{{ element.linkUrl }}</a>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <!-- <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" [matTooltip]="'Edit ' + element.linkName" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('editLink', frameworkService.framework.id, frameworkService.framework.name, frameworkService.framework.logo, frameworkService.framework.website)">
+        <mat-icon color="primary">edit</mat-icon>
+      </button> -->
+      <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" [matTooltip]="'Delete ' + element.linkName" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('deleteLink', element.linkId, element.linkName)">
+        <mat-icon color="warn">delete_outline</mat-icon>
+      </button>
     </td>
   </ng-container>
 

@@ -18,6 +18,10 @@ export class DeleteFrameworkComponent {
       next: () => {
         this.dialog.getDialogById("deleteFrameworkDialog")?.close();
 
+        const linksToRemove = this.frameworkService.frameworkLinks.filter(link => link.frameworkId === this.data.id)[0].links;
+        
+        linksToRemove.forEach((link: any) => this.dbService.deleteLink(link.linkId).subscribe());
+
         this.dbService.getFrameworks().subscribe({
           next: data => {
             if (!data) {

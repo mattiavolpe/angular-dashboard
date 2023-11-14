@@ -28,6 +28,7 @@ import { DeleteFrameworkComponent } from './components/delete-framework/delete-f
 import { EditFrameworkComponent } from './components/edit-framework/edit-framework.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NewLinkComponent } from './components/new-link/new-link.component';
+import { DeleteLinkComponent } from './components/delete-link/delete-link.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { NewLinkComponent } from './components/new-link/new-link.component';
     DeleteFrameworkComponent,
     EditFrameworkComponent,
     PageNotFoundComponent,
-    NewLinkComponent
+    NewLinkComponent,
+    DeleteLinkComponent
   ],
   imports: [
     BrowserModule,

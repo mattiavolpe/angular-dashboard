@@ -9,6 +9,7 @@ export class FrameworkService {
   constructor(private slugPipe: SlugPipe, private router: Router) { }
 
   frameworks!: any[];
+  // frameworkLinks: { frameworkId: string, links: { linkId: string, linkName: string, linkUrl: string }[] }[] = [];
   frameworkLinks: any[] = [];
   framework!: any;
 
