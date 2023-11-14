@@ -93,14 +93,12 @@ export class FrameworkPageComponent implements OnInit {
     switch(type) {
       case "edit":
         dialogRef = this.dialog.open(EditFrameworkComponent, { id: "editFrameworkDialog", data: { id, name, logo, website } });
-        dialogRef.afterClosed().subscribe(() => {
-        });
+        dialogRef.afterClosed().subscribe(() => {});
         break;
       
       case "delete":
         dialogRef = this.dialog.open(DeleteFrameworkComponent, { id: "deleteFrameworkDialog", data: { id, name } });
-        dialogRef.afterClosed().subscribe(() => {
-        });
+        dialogRef.afterClosed().subscribe(() => {});
         break;
     }
   };

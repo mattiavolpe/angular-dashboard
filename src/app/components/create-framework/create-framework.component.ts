@@ -16,8 +16,10 @@ export class CreateFrameworkComponent {
 
   createFramework(form: NgForm) {
     this.dbService.saveFramework(form.value.name, form.value.logo, form.value.website).subscribe({
-      next: () => {
+      next: (data: any) => {
         this.dialog.getDialogById("createFrameworkDialog")?.close();
+
+        this.frameworkService.createFrameworkLinkBase(data.name);
 
         this.dbService.getFrameworks().subscribe({
           next: data => {

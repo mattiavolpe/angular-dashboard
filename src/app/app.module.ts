@@ -27,6 +27,7 @@ import { SlugPipe } from './pipes/slug.pipe';
 import { DeleteFrameworkComponent } from './components/delete-framework/delete-framework.component';
 import { EditFrameworkComponent } from './components/edit-framework/edit-framework.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { NewLinkComponent } from './components/new-link/new-link.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     SlugPipe,
     DeleteFrameworkComponent,
     EditFrameworkComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    NewLinkComponent
   ],
   imports: [
     BrowserModule,

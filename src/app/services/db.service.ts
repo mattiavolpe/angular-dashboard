@@ -70,4 +70,26 @@ export class DbService {
   deleteFramework(id: string) {
     return this.http.delete(`${this.DB_BASE_URL}/framework/${id}.json?auth=${this.authService.user!.getToken()}`);
   }
+
+  getAllLinks() {
+    return this.http.get(`${this.DB_BASE_URL}/link.json?auth=${this.authService.user!.getToken()}`);
+  }
+
+  createLink(frameworkId: string, name: string, link: string) {
+    const body = {
+      framework_id: frameworkId,
+      name,
+      link,
+      createdBy: this.authService.user!.email,
+      lastUpdatedBy: this.authService.user!.email,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+
+    return this.http.post(`${this.DB_BASE_URL}/link.json?auth=${this.authService.user!.getToken()}`, body);
+  }
+
+  getFrameworkLinks(frameworkId: string) {
+    return this.http.get(`${this.DB_BASE_URL}/link.json?orderBy="framework_id"&equalTo="${frameworkId}"&auth=${this.authService.user!.getToken()}`);
+  }
 }

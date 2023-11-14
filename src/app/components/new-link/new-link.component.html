@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Insert a new link for "{{ framework.name }}"</h2>
+
+<mat-dialog-content class="mat-typography">
+  <form class="d-flex flex-column align-items-center" #newLinkForm="ngForm" (ngSubmit)="newLink(newLinkForm)">
+
+    <mat-form-field>
+      <mat-label>Link name</mat-label>
+      <input matInput type="text" name="name" ngModel required autocomplete="name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Link URL</mat-label>
+      <input matInput type="url" name="link" ngModel required />
+    </mat-form-field>
+
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="newLinkForm.invalid">Insert</button>
+    </mat-dialog-actions>
+    
+  </form>
+</mat-dialog-content>

@@ -9,6 +9,7 @@ export class FrameworkService {
   constructor(private slugPipe: SlugPipe, private router: Router) { }
 
   frameworks!: any[];
+  frameworkLinks: any[] = [];
   framework!: any;
 
   syncFrameworks(data: Object) {
@@ -20,6 +21,15 @@ export class FrameworkService {
         website: framework[1].website
       }
     });
+  }
+
+  createFrameworkLinkBase(frameworkId: string) {
+    this.frameworkLinks.push(
+      {
+        frameworkId,
+        links: []
+      }
+    );
   }
 
   redirectToFirstFramework() {

@@ -40,10 +40,33 @@ export class RegisterComponent {
             }
 
             this.frameworkService.syncFrameworks(data);
+
+            this.frameworkService.frameworks.forEach(framework => this.frameworkService.createFrameworkLinkBase(framework.id));
+
             this.frameworkService.redirectToFirstFramework();
           },
           error: error => console.error(error)
-        })
+        });
+
+        this.dbService.getAllLinks().subscribe({
+          next: fetchedLinks => {
+            if (!fetchedLinks)
+              return;
+            
+            Object.entries(fetchedLinks).forEach(entry => {            
+              const frameworkLinkRef = this.frameworkService.frameworkLinks.find(fw => fw.frameworkId === entry[1].framework_id);
+  
+              frameworkLinkRef.links.push(
+                {
+                  linkId: entry[0],
+                  linkName: entry[1].name,
+                  linkUrl: entry[1].link,
+                }
+              );
+            });
+          },
+          error: error => console.error(error)
+        });
       },
       error: error => {
         this.error.status = true;
