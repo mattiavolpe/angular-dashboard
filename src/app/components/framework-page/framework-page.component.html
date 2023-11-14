@@ -35,13 +35,15 @@
   <!-- Position Column -->
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let element"> {{element.linkName}} </td>
+    <td mat-cell *matCellDef="let element">{{ element.linkName }}</td>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="url">
     <th mat-header-cell *matHeaderCellDef>URL</th>
-    <td mat-cell *matCellDef="let element"> {{element.linkUrl}} </td>
+    <td mat-cell *matCellDef="let element">
+      <a [href]="element.linkUrl" target="_blank">{{ element.linkUrl }}</a>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
