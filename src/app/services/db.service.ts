@@ -9,7 +9,7 @@ import { AuthService } from '../auth/services/auth.service';
   providedIn: 'root'
 })
 export class DbService {
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   API_KEY = DB_API_KEY;
   

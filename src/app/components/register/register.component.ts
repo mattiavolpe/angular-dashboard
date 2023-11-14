@@ -5,7 +5,6 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 import { DbService } from 'src/app/services/db.service';
 import { ERROR_MESSAGES } from 'src/app/data/error-messages.data';
 import { FrameworkService } from 'src/app/services/framework.service';
-import { SlugPipe } from 'src/app/pipes/slug.pipe';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +12,7 @@ import { SlugPipe } from 'src/app/pipes/slug.pipe';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  constructor(private dbService: DbService, private authService: AuthService, private router: Router, private frameworkService: FrameworkService, private slugPipe: SlugPipe) {}
+  constructor(private dbService: DbService, private authService: AuthService, private router: Router, private frameworkService: FrameworkService) {}
 
   hide = true;
   error = {
