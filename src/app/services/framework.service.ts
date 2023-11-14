@@ -35,4 +35,12 @@ export class FrameworkService {
   redirectToFirstFramework() {
     this.router.navigate([`/framework/${this.slugPipe.transform(this.frameworks[0].name)}`]);
   }
+
+  syncCurrentFrameworkLinks() {
+    if (this.frameworkLinks.length === 0) {
+      return [];
+    } 
+
+    return this.frameworkLinks.find(link => link.frameworkId === this.framework.id);
+  }
 }
