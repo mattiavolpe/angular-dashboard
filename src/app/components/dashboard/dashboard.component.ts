@@ -15,7 +15,7 @@ import { environments } from 'src/environments/environment';
 export class DashboardComponent {
   constructor(public authService: AuthService, public router: Router, public dialog: MatDialog, public frameworkService: FrameworkService) {}
 
-  process = process;
+  environments = environments;
 
   logoutUser() {
     this.authService.user = null;
