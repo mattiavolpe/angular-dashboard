@@ -7,6 +7,8 @@ import { FrameworkService } from 'src/app/services/framework.service';
 import { DeleteFrameworkComponent } from '../delete-framework/delete-framework.component';
 import { EditFrameworkComponent } from '../edit-framework/edit-framework.component';
 import { DeleteLinkComponent } from '../delete-link/delete-link.component';
+import { environments } from 'src/environments/environment';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-framework-page',
@@ -14,11 +16,13 @@ import { DeleteLinkComponent } from '../delete-link/delete-link.component';
   styleUrls: ['./framework-page.component.scss']
 })
 export class FrameworkPageComponent implements OnInit {
-  constructor(private route: ActivatedRoute, public frameworkService: FrameworkService, private dbService: DbService, private slugPipe: SlugPipe, private dialog: MatDialog, private router: Router) {}
+  constructor(private route: ActivatedRoute, public frameworkService: FrameworkService, private dbService: DbService, private slugPipe: SlugPipe, private dialog: MatDialog, private router: Router, public authService: AuthService) {}
+
+  environments = environments;
 
   links!: { frameworkId: string, links: { linkId: string, linkName: string, linkUrl: string }[] };
 
-  displayedColumns: string[] = ['name', 'url', 'delete'];
+  displayedColumns: string[] = this.authService.user?.email === environments.ADMIN_EMAIL ? ['name', 'url', 'delete'] : ['name', 'url'];
   dataSource: any;
 
   ngOnInit(): void {

@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 import { CreateFrameworkComponent } from 'src/app/components/create-framework/create-framework.component';
 import { FrameworkService } from 'src/app/services/framework.service';
 import { NewLinkComponent } from '../new-link/new-link.component';
+import { environments } from 'src/environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +14,8 @@ import { NewLinkComponent } from '../new-link/new-link.component';
 })
 export class DashboardComponent {
   constructor(public authService: AuthService, public router: Router, public dialog: MatDialog, public frameworkService: FrameworkService) {}
+
+  environments = environments;
 
   logoutUser() {
     this.authService.user = null;
