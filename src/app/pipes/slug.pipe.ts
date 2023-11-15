@@ -8,6 +8,6 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
 }) 
 export class SlugPipe implements PipeTransform {
   transform(value: string, ...args: unknown[]): string {
-    return value.replace(/[^A-Za-z0-9@]/g, "-");
+    return value.replace(/[^A-Za-z0-9@]/g, "-").toLowerCase();
   }
 }
