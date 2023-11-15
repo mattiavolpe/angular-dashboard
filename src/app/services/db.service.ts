@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { DB_API_KEY } from 'env';
 import { AuthService } from '../auth/services/auth.service';
-// CREATE A FILE NAMED env.ts IN THE PROJECT ROOT DIRECTORY AND FILL IT LIKE THIS:
-// export const DB_API_KEY = "providedApiKeyString";
+import { environments } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +9,7 @@ import { AuthService } from '../auth/services/auth.service';
 export class DbService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  API_KEY = DB_API_KEY;
+  API_KEY = environments.DB_API_KEY;
   
   REGISTER_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.API_KEY}`;
   LOGIN_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.API_KEY}`;
