@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/services/auth.service';
-import { environments } from 'src/environments/environment';
+// import { environments } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,8 @@ import { environments } from 'src/environments/environment';
 export class DbService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  API_KEY = environments.DB_API_KEY;
+  // API_KEY = environments.DB_API_KEY;
+  API_KEY = process.env["NG_APP_DB_API_KEY"];
   
   REGISTER_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.API_KEY}`;
   LOGIN_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.API_KEY}`;

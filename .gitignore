@@ -4,6 +4,8 @@
 firebase.json
 .firebaserc
 .firebase
+.env
+environments_bak
 
 # Compiled output
 /dist

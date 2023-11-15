@@ -11,6 +11,7 @@ import { FrameworkService } from './services/framework.service';
 })
 export class AppComponent implements OnInit {
   constructor(private authService: AuthService, private dbService: DbService, public frameworkService: FrameworkService) {}
+  NG_APP_HELLO = process.env['NG_APP_HELLO'];
 
   ngOnInit(): void {
     if (new Date().getTime() <= JSON.parse(localStorage.getItem("user")!)?.expirationDate) {

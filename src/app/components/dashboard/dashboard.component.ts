@@ -5,7 +5,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 import { CreateFrameworkComponent } from 'src/app/components/create-framework/create-framework.component';
 import { FrameworkService } from 'src/app/services/framework.service';
 import { NewLinkComponent } from '../new-link/new-link.component';
-import { environments } from 'src/environments/environment';
+// import { environments } from 'src/environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +15,8 @@ import { environments } from 'src/environments/environment';
 export class DashboardComponent {
   constructor(public authService: AuthService, public router: Router, public dialog: MatDialog, public frameworkService: FrameworkService) {}
 
-  environments = environments;
+  // environments = environments;
+  ADMIN_EMAIL = process.env["NG_APP_ADMIN_EMAIL"];
 
   logoutUser() {
     this.authService.user = null;
