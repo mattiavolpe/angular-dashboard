@@ -13,7 +13,12 @@
           <mat-icon>add</mat-icon>
         </button>
       </mat-list-item>
-    </mat-list>    
+    </mat-list>
+    <h4 class="mb-0 fw-medium text-center pb-5">
+      Logged in as
+      <br />
+      {{ authService.user?.email }}
+    </h4>
   </mat-sidenav>
 
   <mat-sidenav-content class="position-static w-100 ms-0">
