@@ -18,11 +18,11 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class FrameworkPageComponent implements OnInit {
   constructor(private route: ActivatedRoute, public frameworkService: FrameworkService, private dbService: DbService, private slugPipe: SlugPipe, private dialog: MatDialog, private router: Router, public authService: AuthService) {}
 
-  environments = environments;
+  process = process;
 
   links!: { frameworkId: string, links: { linkId: string, linkName: string, linkUrl: string }[] };
 
-  displayedColumns: string[] = this.authService.user?.email === environments.ADMIN_EMAIL ? ['name', 'url', 'delete'] : ['name', 'url'];
+  displayedColumns: string[] = this.authService.user?.email === process.env['ADMIN_EMAIL'] ? ['name', 'url', 'delete'] : ['name', 'url'];
   dataSource: any;
 
   ngOnInit(): void {
