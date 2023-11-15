@@ -44,7 +44,7 @@ export class LoginComponent {
 
             this.frameworkService.frameworks.forEach(framework => this.frameworkService.createFrameworkLinkBase(framework.id));
 
-            this.frameworkService.redirectToFirstFramework();
+            this.router.navigate(["/"]);
           },
           error: error => console.error(error)
         });
