@@ -10,15 +10,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 const routes: Routes = [
   {
     path: "",
-    // canActivate: [authGuard],
     canActivateChild: [authGuardChild],
     component: DashboardComponent,
     children: [
-      // {
-      //   path: "",
-      //   pathMatch: "full",
-      //   redirectTo: "framework"
-      // },
       {
         path: "framework/:name",
         component: FrameworkPageComponent
