@@ -1,4 +1,4 @@
-<h1 class="text-center mb-0 pt-3">LOGIN</h1>
+<h1 class="text-center mb-0 pt-3" id="login_text">LOGIN</h1>
 
 <section class="d-flex justify-content-center py-5">
   <form #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm)">
@@ -19,7 +19,7 @@
       </button>
     </mat-form-field>
   
-    <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+    <button id="login_button" mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
   </form>
 </section>
 

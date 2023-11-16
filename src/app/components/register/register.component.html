@@ -1,4 +1,4 @@
-<h1 class="text-center mb-0 pt-3">REGISTER</h1>
+<h1 class="text-center mb-0 pt-3" id="register_text">REGISTER</h1>
 
 <section class="d-flex justify-content-center py-5">
   <form #registerForm="ngForm" (ngSubmit)="handleRegister(registerForm)">
@@ -19,7 +19,7 @@
       </button>
     </mat-form-field>
   
-    <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Register</button>
+    <button id="register_button" mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Register</button>
   </form>
 </section>
 

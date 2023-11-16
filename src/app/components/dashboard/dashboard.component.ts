@@ -18,6 +18,16 @@ export class DashboardComponent {
   // environments = environments;
   ADMIN_EMAIL = process.env["NG_APP_ADMIN_EMAIL"];
 
+  switchTheme(target: string) {
+    if (target === "dark") {
+      document.body.classList.add("dark");
+      localStorage.setItem("theme_mode", "dark");
+    } else {
+      document.body.classList.remove("dark");
+      localStorage.setItem("theme_mode", "light");
+    }
+  }
+
   logoutUser() {
     this.authService.user = null;
     this.authService.isLoggedIn = false;

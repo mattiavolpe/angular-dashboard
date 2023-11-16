@@ -32,6 +32,12 @@
   <mat-sidenav-content class="position-static w-100 ms-0">
     <mat-toolbar color="primary" class="position-sticky top-0 end-0 z-2">
       <span class="example-spacer"></span>
+      <button id="dark_mode" (click)="switchTheme('dark')" mat-icon-button class="example-icon" aria-label="Dark mode icon" #tooltip="matTooltip" matTooltip="Enale dark mode" matTooltipPosition="below" matTooltipHideDelay="0">
+        <mat-icon>dark_mode</mat-icon>
+      </button>
+      <button id="light_mode" (click)="switchTheme('light')" mat-icon-button class="example-icon" aria-label="Light mode icon" #tooltip="matTooltip" matTooltip="Enable light mode" matTooltipPosition="below" matTooltipHideDelay="0">
+        <mat-icon>light_mode</mat-icon>
+      </button>      
       <button routerLink="/login" *ngIf="!authService.isLoggedIn" mat-icon-button class="example-icon" aria-label="Login icon" #tooltip="matTooltip" matTooltip="Login" matTooltipPosition="below" matTooltipHideDelay="0">
         <mat-icon>login</mat-icon>
       </button>

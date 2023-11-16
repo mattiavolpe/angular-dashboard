@@ -1,3 +1,5 @@
+@use "./assets/scss/variables.scss" as *;
+
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 mat-sidenav .mat-mdc-list-item-unscoped-content {
@@ -16,5 +18,72 @@ mat-sidenav .mat-mdc-list-item-unscoped-content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+}
+
+body:not(.dark) {
+  #light_mode {
+    display: none;
+  }
+}
+
+body.dark {
+  background-color: $dark;
+
+  #dark_mode {
+    display: none;
+  }
+
+  #login_text,
+  #register_text {
+    color: white;
+  }
+
+  #register_button[disabled][disabled],
+  #login_button[disabled][disabled] {
+    background-color: gray;
+    color: $dark;
+    --mdc-protected-button-container-color: gray;
+    --mdc-protected-button-label-text-color: #1e1e1e;
+    --mdc-protected-button-container-elevation: 0;
+  }
+
+  .example-container {
+    background-color: $dark;
+    color: white;
+
+    .mat-drawer {
+      background-color: $dark_light;
+      color: white;
+
+      .mat-mdc-list-base {
+        --mdc-list-list-item-label-text-color: white;
+        --mdc-list-list-item-hover-label-text-color: white;
+        --mdc-list-list-item-active-label-text-color: white;
+        --mdc-list-list-item-focus-label-text-color: white;
+      }
+
+      .mat-mdc-list-item:first-child {
+        border-bottom: 1px solid $dark !important;
+      }
+    }
+
+    #framework_links {
+      background-color: $dark_light !important;
+
+      > li:not(:last-child),
+      thead > tr,
+      tr:not(:last-child) {
+        border-bottom: 2px solid $dark !important;
+      }
+
+      a {
+        color: $primary;
+      }
+    }
+
+    #framework_website {
+      color: $primary;
+    }
   }
 }

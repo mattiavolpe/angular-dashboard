@@ -8,7 +8,7 @@
   </h1>
   <h4 *ngIf="frameworkService.framework?.website" class="fw-bold text-center text-lg-start">
     Official website:
-    <a [href]="frameworkService.framework.website" target="_blank">
+    <a id="framework_website" [href]="frameworkService.framework.website" target="_blank">
       <code>{{ frameworkService.framework.website }}</code>
     </a>
   </h4>
@@ -41,7 +41,7 @@
   </li>
 </ul>
 
-<table class="d-none d-lg-table bg-white">
+<table id="framework_links" class="d-none d-lg-table bg-white">
   <thead>
     <tr>
       <th>

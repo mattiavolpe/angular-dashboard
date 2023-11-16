@@ -14,6 +14,10 @@ export class AppComponent implements OnInit {
   NG_APP_HELLO = process.env['NG_APP_HELLO'];
 
   ngOnInit(): void {
+    if (localStorage.getItem("theme_mode") === "dark") {
+      document.body.classList.add("dark");
+    }
+    
     if (new Date().getTime() <= JSON.parse(localStorage.getItem("user")!)?.expirationDate) {
       this.authService.isLoggedIn = true;
 
