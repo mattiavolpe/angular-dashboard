@@ -1,12 +1,12 @@
 <div class="mb-5">
-  <h1 class="fw-bolder" *ngIf="!frameworkService.framework">Loading...</h1>
-  <h1 class="fw-bolder d-flex align-items-center gap-3" *ngIf="frameworkService.framework">
+  <h1 class="fw-bolder text-center text-lg-start" *ngIf="!frameworkService.framework">Loading...</h1>
+  <h1 class="fw-bolder d-flex align-items-center gap-3 justify-content-center justify-content-lg-start" *ngIf="frameworkService.framework">
     {{ frameworkService.framework?.name }}
     <div class="logo_wrapper" *ngIf="frameworkService.framework.logo?.length > 0">
       <img [src]="frameworkService.framework.logo" [alt]="frameworkService.framework.name + ' logo'" />
     </div>
   </h1>
-  <h4  *ngIf="frameworkService.framework?.website" class="fw-bold">
+  <h4 *ngIf="frameworkService.framework?.website" class="fw-bold text-center text-lg-start">
     Official website:
     <a [href]="frameworkService.framework.website" target="_blank">
       <code>{{ frameworkService.framework.website }}</code>
@@ -15,7 +15,7 @@
 </div>
 
 <div class="d-flex align-items-center justify-content-between mb-3">
-  <ul class="d-flex align-items-center gap-3 list-unstyled mb-0">
+  <ul class="d-flex align-items-center gap-1 gap-lg-3 list-unstyled mb-0">
     <li *ngIf="authService.user?.email === ADMIN_EMAIL">
       <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" [matTooltip]="'Edit ' + frameworkService.framework?.name" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('edit', frameworkService.framework.id, frameworkService.framework.name, frameworkService.framework.logo, frameworkService.framework.website)">
         <mat-icon color="primary">edit</mat-icon>
@@ -30,32 +30,44 @@
   <h4 [matBadge]="dataSource?.length || 0" matBadgeOverlap="false" matBadgeColor="warn" class="mb-0 fw-medium count_badge">Count</h4>
 </div>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<ul class="d-lg-none list-unstyled bg-white framework_links_list">
+  <li *ngFor="let record of dataSource; last as last" [ngClass]="!last ? 'border-bottom' : ''" class="text-center p-2">
+    <h3 class="mb-2">{{ record.linkName }}</h3>
+    <a [href]="record.linkUrl" target="_blank">{{ record.linkUrl }}</a>
+    <br />
+    <button *ngIf="authService.user?.email === ADMIN_EMAIL" mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" [matTooltip]="'Delete ' + record.linkName" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('deleteLink', record.linkId, record.linkName)">
+      <mat-icon color="warn">delete_outline</mat-icon>
+    </button>
+  </li>
+</ul>
 
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let element">{{ element.linkName }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="url">
-    <th mat-header-cell *matHeaderCellDef>URL</th>
-    <td mat-cell *matCellDef="let element">
-      <a [href]="element.linkUrl" target="_blank">{{ element.linkUrl }}</a>
-    </td>
-  </ng-container>
-
-  <ng-container *ngIf="authService.user?.email === ADMIN_EMAIL" matColumnDef="delete">
-    <th mat-header-cell *matHeaderCellDef>Delete</th>
-    <td mat-cell *matCellDef="let element">
-      <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" [matTooltip]="'Delete ' + element.linkName" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('deleteLink', element.linkId, element.linkName)">
-        <mat-icon color="warn">delete_outline</mat-icon>
-      </button>
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+<table class="d-none d-lg-table bg-white">
+  <thead>
+    <tr>
+      <th>
+        <h3 class="mb-0 fw-medium p-3">Name</h3>
+      </th>
+      <th>
+        <h3 class="mb-0 fw-medium p-3">URL</h3>
+      </th>
+      <th>
+        <h3 class="mb-0 fw-medium p-3">Delete</h3>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let record of dataSource">
+      <td class="p-3">
+        <h3 class="mb-0">{{ record.linkName }}</h3>
+      </td>
+      <td class="p-3">
+        <a [href]="record.linkUrl" target="_blank">{{ record.linkUrl }}</a>
+      </td>
+      <td class="p-3">
+        <button *ngIf="authService.user?.email === ADMIN_EMAIL" mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" [matTooltip]="'Delete ' + record.linkName" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('deleteLink', record.linkId, record.linkName)">
+          <mat-icon color="warn">delete_outline</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
 </table>

@@ -8,7 +8,13 @@ mat-sidenav .mat-mdc-list-item-unscoped-content {
 }
 
 .mat-drawer-inner-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .mat-drawer-inner-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }

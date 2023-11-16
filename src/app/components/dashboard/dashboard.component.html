@@ -41,7 +41,7 @@
       </button>
     </mat-toolbar>
 
-    <main class="p-5 overflow-y-auto">
+    <main class="p-2 p-lg-5 overflow-y-auto">
       <h1 *ngIf="!authService.isLoggedIn" class="text-center fw-bolder mb-0 d-flex justify-content-center align-items-center">PLEASE, USE THE TOP-RIGHT LOGIN ICON TO EXPLORE THE SITE</h1>
       <h1 *ngIf="authService.isLoggedIn && frameworkService.frameworks && router.url == '/'" class="text-center fw-bolder mb-0 d-flex justify-content-center align-items-center">SELECT A FRAMEWORK FROM THE LEFT PANEL</h1>
       <router-outlet />
