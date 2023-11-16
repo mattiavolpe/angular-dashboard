@@ -30,7 +30,7 @@
   <h4 [matBadge]="dataSource?.length || 0" matBadgeOverlap="false" matBadgeColor="warn" class="mb-0 fw-medium count_badge">Count</h4>
 </div>
 
-<ul class="d-lg-none list-unstyled bg-white framework_links_list">
+<ul *ngIf="dataSource.length > 0" class="d-lg-none list-unstyled bg-white framework_links_list">
   <li *ngFor="let record of dataSource; last as last" [ngClass]="!last ? 'border-bottom' : ''" class="text-center p-2">
     <h3 class="mb-2">{{ record.linkName }}</h3>
     <a [href]="record.linkUrl" target="_blank">{{ record.linkUrl }}</a>
