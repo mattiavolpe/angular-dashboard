@@ -12,6 +12,21 @@
     position: static;
     width: auto;
     min-width: fit-content;
+
+    .logo_wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      aspect-ratio: 1 / 1;
+      text-align: center;
+  
+      img {
+        height: 72%;
+        max-width: 50px;
+        object-fit: contain;
+      }
+    }
   }
 }
 

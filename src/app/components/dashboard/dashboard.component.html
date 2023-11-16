@@ -2,19 +2,25 @@
   <mat-sidenav *ngIf="authService.isLoggedIn" mode="side" opened class="custom_sidenav">
     <mat-list class="py-0" role="list">
       <mat-list-item *ngIf="authService.user?.email === ADMIN_EMAIL" class="border-bottom new_framework" role="listitem" (click)="openDialog('create')">
-        New framework
+        <div class="logo_wrapper d-lg-none">
+          <mat-icon class="d-lg-none" style="scale: 1.5;">note_add</mat-icon>
+        </div>
+        <span class="d-none d-lg-block">New framework</span>
         <button mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" matTooltip="New framework" matTooltipPosition="below" matTooltipHideDelay="0">
           <mat-icon>add</mat-icon>
         </button>
       </mat-list-item>
       <mat-list-item *ngFor="let framework of frameworkService.frameworks; index as index" role="listitem" routerLinkActive="active text-white" routerLink="/framework/{{ framework.name | slug }}">
-        <span routerLinkActive="text-white">{{ framework.name }}</span>
+        <div class="logo_wrapper d-lg-none" *ngIf="framework.logo?.length > 0">
+          <img [src]="framework.logo" [alt]="framework.name + ' logo'" />
+        </div>
+        <span routerLinkActive="text-white" class="d-none d-lg-block">{{ framework.name }}</span>
         <button *ngIf="authService.user?.email === ADMIN_EMAIL" mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" [matTooltip]="'New link for ' + framework.name" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('newLink', framework.id)">
           <mat-icon>add</mat-icon>
         </button>
       </mat-list-item>
     </mat-list>
-    <h4 class="mb-0 fw-medium text-center pb-5">
+    <h4 class="d-none d-lg-block mb-0 fw-medium text-center pb-5 px-3">
       Logged in as
       <br />
       {{ authService.user?.email }}
