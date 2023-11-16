@@ -18,7 +18,7 @@
           <span routerLinkActive="text-white" class="d-none d-lg-block">{{ framework.name }}</span>
         </div>
         <button *ngIf="authService.user?.email === ADMIN_EMAIL" mat-icon-button class="example-icon" aria-label="Plus icon" #tooltip="matTooltip" [matTooltip]="'New link for ' + framework.name" matTooltipPosition="below" matTooltipHideDelay="0" (click)="openDialog('newLink', framework.id)">
-          <mat-icon>add</mat-icon>
+          <mat-icon routerLinkActive="text-white">add</mat-icon>
         </button>
       </mat-list-item>
     </mat-list>
